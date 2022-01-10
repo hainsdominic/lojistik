@@ -5,8 +5,6 @@ import { MongooseModule } from '@nestjs/mongoose';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { ItemResolver } from './item/item.resolver';
-import { ItemService } from './item/item.service';
 import { ItemModule } from './item/item.module';
 
 @Module({

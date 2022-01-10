@@ -73,26 +73,24 @@ export class CreateItemInput {
 export class UpdateItemInput {
   @Field()
   _id: string;
-  @Field()
+
+  @Field({ nullable: true })
   name: string;
 
-  @Field()
+  @Field({ nullable: true })
   value: number;
 
-  @Field()
+  @Field({ nullable: true })
   height: number;
 
-  @Field()
+  @Field({ nullable: true })
   width: number;
 
-  @Field()
-  length?: number;
+  @Field({ nullable: true })
+  length: number;
 
-  @Field()
-  weight?: number;
-
-  // @Field({ nullable: true })
-  // weight: number;
+  @Field({ nullable: true })
+  weight: number;
 }
 
 @InputType()

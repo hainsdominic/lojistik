@@ -39,10 +39,10 @@ input CreateItemInput {
 
 input UpdateItemInput {
   _id: String!
-  name: String!
-  value: Float!
-  height: Float!
-  width: Float!
-  length: Float!
-  weight: Float!
+  name: String
+  value: Float
+  height: Float
+  width: Float
+  length: Float
+  weight: Float
 }
