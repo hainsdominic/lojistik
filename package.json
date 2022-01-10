@@ -1,0 +1,22 @@
+{
+  "name": "lojistik",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "ci:test": "lerna run ci:test",
+    "dev": "lerna run dev --stream",
+    "new-version": "lerna version --conventional-commits --yes",
+    "diff": "lerna diff"
+  },
+  "version": "0.0.0",
+  "author": "Dominic Hains",
+  "license": "MIT",
+  "devDependencies": {
+    "lerna": "^4.0.0"
+  },
+  "resolutions": {
+    "colors": "1.4.0"
+  }
+}

@@ -1,0 +1,48 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Item {
+  _id: ID!
+  name: String!
+  value: Float!
+  height: Float!
+  width: Float!
+  length: Float!
+  weight: Float!
+  volume: Float!
+}
+
+type Query {
+  items: [Item!]!
+  item(input: FindItemInput!): Item!
+}
+
+input FindItemInput {
+  _id: String!
+}
+
+type Mutation {
+  createItem(input: CreateItemInput!): Item!
+  updateItem(input: UpdateItemInput!): Item!
+  deleteItem(id: String!): Item!
+}
+
+input CreateItemInput {
+  name: String!
+  value: Float!
+  height: Float!
+  width: Float!
+  length: Float!
+  weight: Float!
+}
+
+input UpdateItemInput {
+  _id: String!
+  name: String!
+  value: Float!
+  height: Float!
+  width: Float!
+  length: Float!
+  weight: Float!
+}
