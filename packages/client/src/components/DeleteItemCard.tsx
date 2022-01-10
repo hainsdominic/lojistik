@@ -7,7 +7,7 @@ import {
   Typography,
 } from '@mui/material';
 import React, { useState } from 'react';
-import { useMutation, useQuery } from 'urql';
+import { useMutation } from 'urql';
 import { DeleteById } from '../queries';
 
 function DeleteItemCard() {
