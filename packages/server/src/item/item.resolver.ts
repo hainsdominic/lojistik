@@ -6,12 +6,7 @@ import {
   Args,
   Mutation,
 } from '@nestjs/graphql';
-import {
-  Item,
-  CreateItemInput,
-  FindItemInput,
-  UpdateItemInput,
-} from './item.schema';
+import { Item, CreateItemInput, UpdateItemInput } from './item.schema';
 import { ItemService } from './item.service';
 
 @Resolver(() => Item)
@@ -24,7 +19,7 @@ export class ItemResolver {
   }
 
   @Query(() => Item)
-  async item(@Args('input') { _id }: FindItemInput) {
+  async item(@Args('id') _id: string) {
     return this.itemService.findById(_id);
   }
 

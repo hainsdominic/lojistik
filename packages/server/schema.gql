@@ -15,11 +15,7 @@ type Item {
 
 type Query {
   items: [Item!]!
-  item(input: FindItemInput!): Item!
-}
-
-input FindItemInput {
-  _id: String!
+  item(id: String!): Item!
 }
 
 type Mutation {

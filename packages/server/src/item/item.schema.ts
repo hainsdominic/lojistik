@@ -8,7 +8,7 @@ export type ItemDocument = Item & mongoose.Document;
 @ObjectType()
 export class Item {
   @Field(() => ID)
-  _id: number;
+  _id: string;
 
   // Name of the item
   @Prop({ required: true })
@@ -91,10 +91,4 @@ export class UpdateItemInput {
 
   @Field({ nullable: true })
   weight?: number;
-}
-
-@InputType()
-export class FindItemInput {
-  @Field()
-  _id: string;
 }
