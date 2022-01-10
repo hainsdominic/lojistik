@@ -8,21 +8,7 @@ import {
 } from '@mui/material';
 import React, { useState } from 'react';
 import { useQuery } from 'urql';
-
-const FindByIdQuery = `
-  query ($ide: String!) {
-    item (id: $ide) {
-      _id
-      name
-      value
-      height
-      width
-      length
-      weight
-      volume
-    }
-  }
-`;
+import { FindByIdQuery } from '../queries';
 
 // Find all items and find item by id
 function FindItemCard() {
@@ -30,11 +16,11 @@ function FindItemCard() {
   const [fetched, setFetched] = useState(false);
   const [result, reexecuteQuery] = useQuery({
     query: FindByIdQuery,
-    variables: { ide: id },
+    variables: { id },
     pause: true,
   });
 
-  const { data, fetching, error } = result;
+  const { data, fetching } = result;
 
   return (
     <Card>
@@ -51,9 +37,10 @@ function FindItemCard() {
             <Button
               variant="contained"
               onClick={() => {
-                setFetched(true);
-                reexecuteQuery();
-                console.log(id);
+                if (id) {
+                  setFetched(true);
+                  reexecuteQuery();
+                }
               }}
             >
               Find

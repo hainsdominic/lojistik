@@ -8,20 +8,20 @@ import {
 } from '@mui/material';
 import React, { useState } from 'react';
 import { useMutation } from 'urql';
-import { CreateItem } from '../queries';
+import { UpdateItem } from '../queries';
 
-function CreateItemCard() {
+function UpdateItemCard() {
   const [fetched, setFetched] = useState(false);
-  const [updateCreateItemResult, createItem] = useMutation(CreateItem);
+  const [updateUpdateItemResult, updateItem] = useMutation(UpdateItem);
   const [id, setId] = useState('');
-  const [name, setName] = useState('');
+  const [name, setName] = useState<string | null>(null);
   const [value, setValue] = useState<number | null>(null);
   const [height, setHeight] = useState<number | null>(null);
   const [width, setWidth] = useState<number | null>(null);
   const [length, setLength] = useState<number | null>(null);
   const [weight, setWeight] = useState<number | null>(null);
 
-  const { error } = updateCreateItemResult;
+  const { error } = updateUpdateItemResult;
 
   return (
     <Card>
@@ -29,8 +29,19 @@ function CreateItemCard() {
         <Grid container spacing={2} style={{ width: '40%' }}>
           <Grid item xs={12}>
             <TextField
+              label="ID"
+              onChange={(e) => setId(e.target.value)}
+              fullWidth
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
               label="Name"
-              onChange={(e) => setName(e.target.value)}
+              onChange={(e) => {
+                if (e.target.value !== '') {
+                  setName(e.target.value);
+                }
+              }}
               fullWidth
             />
           </Grid>
@@ -79,14 +90,20 @@ function CreateItemCard() {
               variant="contained"
               onClick={() => {
                 setFetched(true);
-                createItem({
-                  input: { name, value, height, width, length, weight },
-                }).then((result) => {
-                  setId(result?.data?.createItem?._id);
+                updateItem({
+                  input: {
+                    _id: id,
+                    name,
+                    value,
+                    height,
+                    width,
+                    length,
+                    weight,
+                  },
                 });
               }}
             >
-              Create
+              Update
             </Button>
           </Grid>
         </Grid>
@@ -94,7 +111,7 @@ function CreateItemCard() {
           <Card variant="outlined" style={{ width: '40%', marginTop: '2%' }}>
             <CardContent>
               <Typography variant="body1">
-                Could not create item. Please try again by filling all fields.
+                Could not update item. Is the ID valid?
               </Typography>
             </CardContent>
           </Card>
@@ -102,7 +119,7 @@ function CreateItemCard() {
         {!error && fetched && (
           <Card variant="outlined" style={{ width: '40%', marginTop: '2%' }}>
             <CardContent>
-              <Typography variant="body1">Created item ID: {id}</Typography>
+              <Typography variant="body1">Updated successfully.</Typography>
             </CardContent>
           </Card>
         )}
@@ -111,4 +128,4 @@ function CreateItemCard() {
   );
 }
 
-export default CreateItemCard;
+export default UpdateItemCard;

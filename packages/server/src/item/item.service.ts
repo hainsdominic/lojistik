@@ -29,19 +29,24 @@ export class ItemService {
   }
 
   async update(item: UpdateItemInput) {
+    // Deletes the null properties
+    const cleanedItem = Object.fromEntries(
+      Object.entries(item).filter(([_, v]) => v != null),
+    );
+
     // Get the old item from the database
-    const foundItem = await this.itemModel.findById(item._id);
+    const foundItem = await this.itemModel.findById(cleanedItem._id);
 
     // Updates the volume with the most recent values
     // If a value is not updates, item[side] will be undefined and the older value will be used
     const volume = this.calculateVolume(
-      item.length || foundItem.length,
-      item.width || foundItem.width,
-      item.height || foundItem.height,
+      cleanedItem.length || foundItem.length,
+      cleanedItem.width || foundItem.width,
+      cleanedItem.height || foundItem.height,
     );
     return this.itemModel.findByIdAndUpdate(
-      item._id,
-      { ...item, volume },
+      cleanedItem._id,
+      { ...cleanedItem, volume },
       {
         new: true,
       },

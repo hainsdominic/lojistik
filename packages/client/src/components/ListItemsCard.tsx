@@ -21,6 +21,7 @@ const ListItemsQuery = `
 function ListItemsCard() {
   const [result, reexecuteQuery] = useQuery({
     query: ListItemsQuery,
+    requestPolicy: 'network-only',
   });
 
   const { data, fetching, error } = result;

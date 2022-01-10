@@ -6,7 +6,7 @@ import Box from '@mui/material/Box';
 import { createClient, Provider } from 'urql';
 
 import CreateItemCard from './components/CreateItemCard';
-import EditItemCard from './components/EditItemCard';
+import UpdateItemCard from './components/UpdateItemCard';
 import ListItemsCard from './components/ListItemsCard';
 import FindItemCard from './components/FindItemCard';
 import DeleteItemCard from './components/DeleteItemCard';
@@ -62,7 +62,7 @@ export default function App() {
             aria-label="basic tabs example"
           >
             <Tab label="Create Item" {...a11yProps(0)} />
-            <Tab label="Edit Item" {...a11yProps(1)} />
+            <Tab label="Update Item" {...a11yProps(1)} />
             <Tab label="List Items" {...a11yProps(2)} />
             <Tab label="Find Item" {...a11yProps(3)} />
             <Tab label="Delete Item" {...a11yProps(3)} />
@@ -72,7 +72,7 @@ export default function App() {
           <CreateItemCard />
         </TabPanel>
         <TabPanel value={value} index={1}>
-          <EditItemCard />
+          <UpdateItemCard />
         </TabPanel>
         <TabPanel value={value} index={2}>
           <ListItemsCard />
