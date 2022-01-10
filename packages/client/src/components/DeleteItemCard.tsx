@@ -8,14 +8,7 @@ import {
 } from '@mui/material';
 import React, { useState } from 'react';
 import { useMutation, useQuery } from 'urql';
-
-const DeleteById = `
-  mutation deleteItem ($id: String!) {
-    deleteItem (id: $id) {
-      _id
-    }
-  }
-`;
+import { DeleteById } from '../queries';
 
 function DeleteItemCard() {
   const [id, setId] = useState('');
