@@ -75,22 +75,22 @@ export class UpdateItemInput {
   _id: string;
 
   @Field({ nullable: true })
-  name: string;
+  name?: string;
 
   @Field({ nullable: true })
-  value: number;
+  value?: number;
 
   @Field({ nullable: true })
-  height: number;
+  height?: number;
 
   @Field({ nullable: true })
-  width: number;
+  width?: number;
 
   @Field({ nullable: true })
-  length: number;
+  length?: number;
 
   @Field({ nullable: true })
-  weight: number;
+  weight?: number;
 }
 
 @InputType()
