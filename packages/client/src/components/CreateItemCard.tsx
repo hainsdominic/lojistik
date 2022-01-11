@@ -38,7 +38,7 @@ function CreateItemCard() {
           <Grid item xs={12}>
             <TextField
               label="Value (in $USD)"
-              onChange={(e) => setValue(parseInt(e.target.value))}
+              onChange={(e) => setValue(parseFloat(e.target.value))}
               fullWidth
               type="number"
             />
@@ -46,7 +46,7 @@ function CreateItemCard() {
           <Grid item xs={12}>
             <TextField
               label="Height (in cm)"
-              onChange={(e) => setHeight(parseInt(e.target.value))}
+              onChange={(e) => setHeight(parseFloat(e.target.value))}
               fullWidth
               type="number"
             />
@@ -54,7 +54,7 @@ function CreateItemCard() {
           <Grid item xs={12}>
             <TextField
               label="Width (in cm)"
-              onChange={(e) => setWidth(parseInt(e.target.value))}
+              onChange={(e) => setWidth(parseFloat(e.target.value))}
               fullWidth
               type="number"
             />
@@ -62,7 +62,7 @@ function CreateItemCard() {
           <Grid item xs={12}>
             <TextField
               label="Length (in cm)"
-              onChange={(e) => setLength(parseInt(e.target.value))}
+              onChange={(e) => setLength(parseFloat(e.target.value))}
               fullWidth
               type="number"
             />
@@ -70,7 +70,7 @@ function CreateItemCard() {
           <Grid item xs={12}>
             <TextField
               label="Weight (in grams)"
-              onChange={(e) => setWeight(parseInt(e.target.value))}
+              onChange={(e) => setWeight(parseFloat(e.target.value))}
               fullWidth
               type="number"
             />

@@ -1,6 +1,7 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import * as mongoose from 'mongoose';
 import { ObjectType, Field, ID, InputType, Int } from '@nestjs/graphql';
+import { IsInt, IsOptional, IsPositive, Min } from 'class-validator';
 
 export type ItemDocument = Item & mongoose.Document;
 
@@ -58,21 +59,28 @@ export class CreateItemInput {
   @Field()
   name: string;
 
+  @IsPositive()
   @Field()
   value: number;
 
+  @IsPositive()
   @Field()
   height: number;
 
+  @IsPositive()
   @Field()
   width: number;
 
+  @IsPositive()
   @Field()
   length: number;
 
+  @IsPositive()
   @Field()
   weight: number;
 
+  @IsInt()
+  @Min(0)
   @Field()
   quantity: number;
 }
@@ -82,24 +90,38 @@ export class UpdateItemInput {
   @Field()
   _id: string;
 
+  @IsOptional()
   @Field({ nullable: true })
   name: string;
 
+  @IsPositive()
+  @IsOptional()
   @Field({ nullable: true })
   value: number;
 
+  @IsPositive()
+  @IsOptional()
   @Field({ nullable: true })
-  height: number;
+  height?: number;
 
+  @IsPositive()
+  @IsOptional()
   @Field({ nullable: true })
   width: number;
 
+  @IsPositive()
+  @IsOptional()
   @Field({ nullable: true })
   length: number;
 
+  @IsPositive()
+  @IsOptional()
   @Field({ nullable: true })
   weight: number;
 
+  @IsInt()
+  @Min(0)
+  @IsOptional()
   @Field({ nullable: true })
   quantity: number;
 }

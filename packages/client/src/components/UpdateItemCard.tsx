@@ -49,7 +49,7 @@ function UpdateItemCard() {
           <Grid item xs={12}>
             <TextField
               label="Value (in $USD)"
-              onChange={(e) => setValue(parseInt(e.target.value))}
+              onChange={(e) => setValue(parseFloat(e.target.value))}
               fullWidth
               type="number"
             />
@@ -57,7 +57,7 @@ function UpdateItemCard() {
           <Grid item xs={12}>
             <TextField
               label="Height (in cm)"
-              onChange={(e) => setHeight(parseInt(e.target.value))}
+              onChange={(e) => setHeight(parseFloat(e.target.value))}
               fullWidth
               type="number"
             />
@@ -65,7 +65,7 @@ function UpdateItemCard() {
           <Grid item xs={12}>
             <TextField
               label="Width (in cm)"
-              onChange={(e) => setWidth(parseInt(e.target.value))}
+              onChange={(e) => setWidth(parseFloat(e.target.value))}
               fullWidth
               type="number"
             />
@@ -73,7 +73,7 @@ function UpdateItemCard() {
           <Grid item xs={12}>
             <TextField
               label="Length (in cm)"
-              onChange={(e) => setLength(parseInt(e.target.value))}
+              onChange={(e) => setLength(parseFloat(e.target.value))}
               fullWidth
               type="number"
             />
@@ -81,7 +81,7 @@ function UpdateItemCard() {
           <Grid item xs={12}>
             <TextField
               label="Weight (in grams)"
-              onChange={(e) => setWeight(parseInt(e.target.value))}
+              onChange={(e) => setWeight(parseFloat(e.target.value))}
               fullWidth
               type="number"
             />
@@ -110,18 +110,20 @@ function UpdateItemCard() {
                     weight,
                     quantity,
                   },
-                });
+                }).then((e) => console.log(e));
               }}
             >
               Update
             </Button>
           </Grid>
         </Grid>
+
         {error && fetched && (
           <Card variant="outlined" style={{ width: '40%', marginTop: '2%' }}>
             <CardContent>
               <Typography variant="body1">
-                Could not update the item: {error.message}
+                Could not update the item. All values should be realistic and
+                quantity should be an integer: {error.message}
               </Typography>
             </CardContent>
           </Card>

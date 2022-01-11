@@ -1,3 +1,4 @@
+import { ValidationPipe } from '@nestjs/common';
 import { Resolver, Query, Args, Mutation } from '@nestjs/graphql';
 import { Item, CreateItemInput, UpdateItemInput } from './item.schema';
 import { ItemService } from './item.service';
@@ -26,7 +27,10 @@ export class ItemResolver {
 
   // Update an item by id
   @Mutation(() => Item)
-  async updateItem(@Args('input') item: UpdateItemInput) {
+  async updateItem(
+    @Args('input')
+    item: UpdateItemInput,
+  ) {
     return this.itemService.update(item);
   }
 
