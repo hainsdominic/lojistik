@@ -111,7 +111,7 @@ function CreateItemCard() {
           <Card variant="outlined" style={{ width: '40%', marginTop: '2%' }}>
             <CardContent>
               <Typography variant="body1">
-                Could not create item. Please try again by filling all fields.
+                Could not create the item: {error.message}
               </Typography>
             </CardContent>
           </Card>

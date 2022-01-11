@@ -121,7 +121,7 @@ function UpdateItemCard() {
           <Card variant="outlined" style={{ width: '40%', marginTop: '2%' }}>
             <CardContent>
               <Typography variant="body1">
-                Could not update item. Is the ID valid?
+                Could not update the item: {error.message}
               </Typography>
             </CardContent>
           </Card>
