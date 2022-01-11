@@ -12,7 +12,7 @@ import { ItemModule } from './item/item.module';
     ConfigModule.forRoot({
       isGlobal: true,
     }),
-    MongooseModule.forRoot(process.env.DATABASE_URL),
+    MongooseModule.forRoot('mongodb://mongo:27017/lojistik'),
     GraphQLModule.forRoot({
       autoSchemaFile: 'schema.gql',
     }),

@@ -8,3 +8,4 @@ temp/
 .netlify
 default.json
 *.DS_Store
+data/

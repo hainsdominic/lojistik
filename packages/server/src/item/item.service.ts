@@ -25,15 +25,8 @@ export class ItemService {
     // Calculates the volume on the fly using the length, the width and the height
     const { length, width, height } = item;
 
-    // this.validatePositiveIntegers([
-    //   item.length,
-    //   item.width,
-    //   item.height,
-    //   item.quantity,
-    //   item.value,
-    // ]);
-
     const volume = this.calculateVolume(length, width, height);
+
     return this.itemModel.create({ ...item, volume });
   }
 
@@ -42,14 +35,6 @@ export class ItemService {
     const cleanedItem = Object.fromEntries(
       Object.entries(item).filter(([_, v]) => v != null),
     );
-
-    // this.validatePositiveIntegers([
-    //   item.length,
-    //   item.width,
-    //   item.height,
-    //   item.quantity,
-    //   item.value,
-    // ]);
 
     // Get the old item from the database
     const foundItem = await this.itemModel.findById(cleanedItem._id);
@@ -76,16 +61,5 @@ export class ItemService {
 
   calculateVolume(length: number, width: number, height: number): number {
     return length * width * height;
-  }
-
-  // Validate that there is only positive integers for dimensions, quantity and value
-  // Ignores null values
-  validatePositiveIntegers(integers: number[]) {
-    if (integers.some((integer) => integer <= 0 && integer !== null)) {
-      throw new HttpException(
-        'Invalid numbers: some numbers must be greater than zero',
-        HttpStatus.BAD_REQUEST,
-      );
-    }
   }
 }

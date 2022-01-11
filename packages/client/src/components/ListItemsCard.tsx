@@ -20,7 +20,6 @@ function ListItemsCard() {
         </Button>
         {!fetching &&
           !error &&
-          // data.items?.length > 0 &&
           data?.items?.map((item: Item) => (
             <Card
               key={item._id}
