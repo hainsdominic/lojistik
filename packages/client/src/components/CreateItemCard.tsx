@@ -69,7 +69,7 @@ function CreateItemCard() {
           </Grid>
           <Grid item xs={12}>
             <TextField
-              label="Weight (in cm)"
+              label="Weight (in grams)"
               onChange={(e) => setWeight(parseInt(e.target.value))}
               fullWidth
               type="number"
