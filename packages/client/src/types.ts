@@ -19,4 +19,7 @@ export interface Item {
 
   // Volume of the item in centimeters cube
   volume: number;
+
+  // Quantity of the item available
+  quantity: number;
 }

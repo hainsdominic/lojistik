@@ -25,6 +25,7 @@ query ($id: String!) {
     length
     weight
     volume
+    quantity
   }
 }
 `;
@@ -33,6 +34,22 @@ export const DeleteById = `
   mutation deleteItem ($id: String!) {
     deleteItem (id: $id) {
       _id
+    }
+  }
+`;
+
+export const ListItemsQuery = `
+  query {
+    items {
+      _id
+      name
+      value
+      height
+      width
+      length
+      weight
+      volume
+      quantity
     }
   }
 `;

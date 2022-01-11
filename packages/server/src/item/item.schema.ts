@@ -44,6 +44,11 @@ export class Item {
   @Prop({ required: true })
   @Field()
   volume: number;
+
+  // Quantity of the item in the warehouse
+  @Prop({ required: true })
+  @Field()
+  quantity: number;
 }
 
 export const ItemSchema = SchemaFactory.createForClass(Item);
@@ -67,6 +72,9 @@ export class CreateItemInput {
 
   @Field()
   weight: number;
+
+  @Field()
+  quantity: number;
 }
 
 @InputType()
@@ -91,4 +99,7 @@ export class UpdateItemInput {
 
   @Field({ nullable: true })
   weight: number;
+
+  @Field({ nullable: true })
+  quantity: number;
 }

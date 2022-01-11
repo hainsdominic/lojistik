@@ -11,6 +11,7 @@ type Item {
   length: Float!
   weight: Float!
   volume: Float!
+  quantity: Float!
 }
 
 type Query {
@@ -31,6 +32,7 @@ input CreateItemInput {
   width: Float!
   length: Float!
   weight: Float!
+  quantity: Float!
 }
 
 input UpdateItemInput {
@@ -41,4 +43,5 @@ input UpdateItemInput {
   width: Float
   length: Float
   weight: Float
+  quantity: Float
 }

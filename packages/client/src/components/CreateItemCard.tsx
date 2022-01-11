@@ -20,6 +20,7 @@ function CreateItemCard() {
   const [width, setWidth] = useState<number | null>(null);
   const [length, setLength] = useState<number | null>(null);
   const [weight, setWeight] = useState<number | null>(null);
+  const [quantity, setQuantity] = useState<number | null>(null);
 
   const { error } = updateCreateItemResult;
 
@@ -75,12 +76,28 @@ function CreateItemCard() {
             />
           </Grid>
           <Grid item xs={12}>
+            <TextField
+              label="Quantity"
+              onChange={(e) => setQuantity(parseInt(e.target.value))}
+              fullWidth
+              type="number"
+            />
+          </Grid>
+          <Grid item xs={12}>
             <Button
               variant="contained"
               onClick={() => {
                 setFetched(true);
                 createItem({
-                  input: { name, value, height, width, length, weight },
+                  input: {
+                    name,
+                    value,
+                    height,
+                    width,
+                    length,
+                    weight,
+                    quantity,
+                  },
                 }).then((result) => {
                   setId(result?.data?.createItem?._id);
                 });

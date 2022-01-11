@@ -20,6 +20,7 @@ function UpdateItemCard() {
   const [width, setWidth] = useState<number | null>(null);
   const [length, setLength] = useState<number | null>(null);
   const [weight, setWeight] = useState<number | null>(null);
+  const [quantity, setQuantity] = useState<number | null>(null);
 
   const { error } = updateUpdateItemResult;
 
@@ -86,6 +87,14 @@ function UpdateItemCard() {
             />
           </Grid>
           <Grid item xs={12}>
+            <TextField
+              label="Quantity"
+              onChange={(e) => setQuantity(parseInt(e.target.value))}
+              fullWidth
+              type="number"
+            />
+          </Grid>
+          <Grid item xs={12}>
             <Button
               variant="contained"
               onClick={() => {
@@ -99,6 +108,7 @@ function UpdateItemCard() {
                     width,
                     length,
                     weight,
+                    quantity,
                   },
                 });
               }}

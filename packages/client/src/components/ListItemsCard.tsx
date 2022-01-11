@@ -2,21 +2,7 @@ import React from 'react';
 import { Button, Card, CardContent, Typography } from '@mui/material';
 import { useQuery } from 'urql';
 import { Item } from '../types';
-
-const ListItemsQuery = `
-  query {
-    items {
-      _id
-      name
-      value
-      height
-      width
-      length
-      weight
-      volume
-    }
-  }
-`;
+import { ListItemsQuery } from '../queries';
 
 function ListItemsCard() {
   const [result, reexecuteQuery] = useQuery({
@@ -55,6 +41,9 @@ function ListItemsCard() {
                 <Typography variant="body1">Weight: {item.weight} g</Typography>
                 <Typography variant="body1">
                   Volume: {item.volume} cm³
+                </Typography>
+                <Typography variant="body1">
+                  Quantity: {item.quantity}
                 </Typography>
               </CardContent>
             </Card>

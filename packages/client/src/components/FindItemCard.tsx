@@ -77,6 +77,9 @@ function FindItemCard() {
               <Typography variant="body1">
                 Volume: {data.item.volume} cm³
               </Typography>
+              <Typography variant="body1">
+                Quantity: {data.item.quantity}
+              </Typography>
             </CardContent>
           </Card>
         )}
