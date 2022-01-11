@@ -1,11 +1,4 @@
-import {
-  Resolver,
-  Query,
-  ResolveField,
-  Parent,
-  Args,
-  Mutation,
-} from '@nestjs/graphql';
+import { Resolver, Query, Args, Mutation } from '@nestjs/graphql';
 import { Item, CreateItemInput, UpdateItemInput } from './item.schema';
 import { ItemService } from './item.service';
 
@@ -13,26 +6,31 @@ import { ItemService } from './item.service';
 export class ItemResolver {
   constructor(private itemService: ItemService) {}
 
-  @Query(() => [Item]) // <-- what will the query return?
-  async items /* <-- Query name */() {
-    return this.itemService.findMany(); // Resolve the query
+  // Get all items
+  @Query(() => [Item])
+  async items() {
+    return this.itemService.findMany();
   }
 
+  // Get an item by id
   @Query(() => Item)
   async item(@Args('id') _id: string) {
     return this.itemService.findById(_id);
   }
 
+  // Create an item
   @Mutation(() => Item)
   async createItem(@Args('input') item: CreateItemInput) {
     return this.itemService.create(item);
   }
 
+  // Update an item by id
   @Mutation(() => Item)
   async updateItem(@Args('input') item: UpdateItemInput) {
     return this.itemService.update(item);
   }
 
+  // Delete an item by id
   @Mutation(() => Item)
   async deleteItem(@Args('id') _id: string) {
     return this.itemService.delete(_id);
