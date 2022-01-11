@@ -12,7 +12,7 @@ export class Item {
   _id: string;
 
   // Name of the item
-  @Prop({ required: true })
+  @Prop({ required: true, type: String, unique: true })
   @Field()
   name: string;
 

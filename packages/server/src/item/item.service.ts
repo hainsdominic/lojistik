@@ -22,8 +22,11 @@ export class ItemService {
   }
 
   async create(item: CreateItemInput) {
+    // Makes the name lowercase
+    item.name = item.name.toLowerCase();
+
     // Calculates the volume on the fly using the length, the width and the height
-    const { length, width, height } = item;
+    let { length, width, height } = item;
 
     const volume = this.calculateVolume(length, width, height);
 
