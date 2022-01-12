@@ -39,8 +39,8 @@ export const DeleteById = `
 `;
 
 export const ListItemsQuery = `
-  query {
-    items {
+  query filterItems ($filter: FilterItemsInput!) {
+    filterItems (filter: $filter) {
       _id
       name
       value

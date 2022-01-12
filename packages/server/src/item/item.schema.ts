@@ -1,7 +1,7 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import * as mongoose from 'mongoose';
 import { ObjectType, Field, ID, InputType, Int } from '@nestjs/graphql';
-import { IsInt, IsOptional, IsPositive, Min } from 'class-validator';
+import { IsInt, IsNumber, IsOptional, IsPositive, Min } from 'class-validator';
 
 export type ItemDocument = Item & mongoose.Document;
 
@@ -128,32 +128,38 @@ export class UpdateItemInput {
 
 @InputType()
 export class FilterItemsInput {
-  @IsPositive()
+  @IsNumber()
+  @Min(0)
   @IsOptional()
   @Field({ nullable: true })
   maxValue: number;
 
-  @IsPositive()
+  @IsNumber()
+  @Min(0)
   @IsOptional()
   @Field({ nullable: true })
   minValue: number;
 
-  @IsPositive()
+  @IsInt()
+  @Min(0)
   @IsOptional()
   @Field({ nullable: true })
   minQuantity: number;
 
-  @IsPositive()
+  @IsInt()
+  @Min(0)
   @IsOptional()
   @Field({ nullable: true })
   maxQuantity: number;
 
-  @IsPositive()
+  @IsNumber()
+  @Min(0)
   @IsOptional()
   @Field({ nullable: true })
   maxVolume: number;
 
-  @IsPositive()
+  @IsNumber()
+  @Min(0)
   @IsOptional()
   @Field({ nullable: true })
   minVolume: number;
