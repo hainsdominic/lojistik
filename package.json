@@ -7,6 +7,7 @@
   "scripts": {
     "ci:test": "lerna run ci:test",
     "dev": "lerna run dev --stream",
+    "docker": "lerna run docker --stream",
     "new-version": "lerna version --conventional-commits --yes",
     "diff": "lerna diff"
   },

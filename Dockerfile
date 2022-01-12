@@ -10,4 +10,4 @@ COPY . .
 RUN yarn install
 
 #Default command
-CMD ["yarn","dev"]
+CMD ["yarn","docker"]
