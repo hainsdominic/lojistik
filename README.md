@@ -36,7 +36,7 @@ After installing the prerequisites, run this command in the folder root:
 
 ### Using Node.js, yarn and MongoDB
 
-You need Node.js (v12 or higher), yarn and MongoDB installed on your machine. MongoDB needs to be running a process on port 27017.
+You need Node.js (v16 or higher), yarn and MongoDB installed on your machine. MongoDB needs to be running a process on port 27017.
 
 After installing the prerequisites, run this command in the folder root to install the dependencies:
 
