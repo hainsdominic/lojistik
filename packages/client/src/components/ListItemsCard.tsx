@@ -84,9 +84,7 @@ function ListItemsCard() {
       <CardContent>
         <Grid container spacing={2}>
           <Grid item xs={4}>
-            <Typography variant="h6">
-              Filters {JSON.stringify(firstLoad)}
-            </Typography>
+            <Typography variant="h6">Filters</Typography>
           </Grid>
         </Grid>
         <Card
