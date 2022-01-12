@@ -28,15 +28,17 @@ In order to facilitate demonstration I dockerized the whole application. You nee
 [Docker installation instructions](https://docs.docker.com/get-docker/)
 [docker-compose installation instructions](https://docs.docker.com/compose/install/)
 
-After installing the prerequisites, run this command on the folder root:
+After installing the prerequisites, run this command in the folder root:
 
 ```docker-compose up```
+
+> Depending on your network speed, this command might take 1-5 minutes. The application will be fully started when docker stops outputting.
 
 ### Using Node.js, yarn and MongoDB
 
 You need Node.js (v12 or higher), yarn and MongoDB installed on your machine. MongoDB needs to be running a process on port 27017.
 
-After installing the prerequisites, run this command on the folder root to install the dependencies:
+After installing the prerequisites, run this command in the folder root to install the dependencies:
 
 ```yarn install```
 
