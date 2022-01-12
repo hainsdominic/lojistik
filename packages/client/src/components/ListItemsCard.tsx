@@ -75,7 +75,7 @@ function ListItemsCard() {
       setQuantity([0, newMaxQuantity]);
       setVolume([0, newMaxVolume]);
     }
-  }, [data, fetching, firstLoad, error]);
+  }, [data, fetching, firstLoad]);
 
   return (
     <Card variant="outlined">
