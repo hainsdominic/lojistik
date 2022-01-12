@@ -37,3 +37,7 @@ You need Node.js (v12 or higher), yarn and MongoDB installed on your machine. Mo
 After installing the prerequisites, run this command on the folder root:
 
 ```yarn dev```
+
+## Usage
+
+Once the application has been installed and is running, you can access the front-end by going to <http://localhost:3000> on your favorite browser.
