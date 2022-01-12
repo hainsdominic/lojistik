@@ -102,7 +102,7 @@ export class UpdateItemInput {
   @IsPositive()
   @IsOptional()
   @Field({ nullable: true })
-  height?: number;
+  height: number;
 
   @IsPositive()
   @IsOptional()
@@ -124,4 +124,37 @@ export class UpdateItemInput {
   @IsOptional()
   @Field({ nullable: true })
   quantity: number;
+}
+
+@InputType()
+export class FilterItemsInput {
+  @IsPositive()
+  @IsOptional()
+  @Field({ nullable: true })
+  maxValue: number;
+
+  @IsPositive()
+  @IsOptional()
+  @Field({ nullable: true })
+  minValue: number;
+
+  @IsPositive()
+  @IsOptional()
+  @Field({ nullable: true })
+  minQuantity: number;
+
+  @IsPositive()
+  @IsOptional()
+  @Field({ nullable: true })
+  maxQuantity: number;
+
+  @IsPositive()
+  @IsOptional()
+  @Field({ nullable: true })
+  maxVolume: number;
+
+  @IsPositive()
+  @IsOptional()
+  @Field({ nullable: true })
+  minVolume: number;
 }

@@ -17,6 +17,16 @@ type Item {
 type Query {
   items: [Item!]!
   item(id: String!): Item!
+  filterItems(filter: FilterItemsInput!): [Item!]!
+}
+
+input FilterItemsInput {
+  maxValue: Float
+  minValue: Float
+  minQuantity: Float
+  maxQuantity: Float
+  maxVolume: Float
+  minVolume: Float
 }
 
 type Mutation {

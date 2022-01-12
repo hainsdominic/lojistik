@@ -1,6 +1,11 @@
 import { ValidationPipe } from '@nestjs/common';
 import { Resolver, Query, Args, Mutation } from '@nestjs/graphql';
-import { Item, CreateItemInput, UpdateItemInput } from './item.schema';
+import {
+  Item,
+  CreateItemInput,
+  UpdateItemInput,
+  FilterItemsInput,
+} from './item.schema';
 import { ItemService } from './item.service';
 
 @Resolver(() => Item)
@@ -17,6 +22,11 @@ export class ItemResolver {
   @Query(() => Item)
   async item(@Args('id') _id: string) {
     return this.itemService.findById(_id);
+  }
+
+  @Query(() => [Item])
+  async filterItems(@Args('filter') filters: FilterItemsInput) {
+    return this.itemService.filterItems(filters);
   }
 
   // Create an item

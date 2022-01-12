@@ -111,7 +111,9 @@ function CreateItemCard() {
           <Card variant="outlined" style={{ width: '40%', marginTop: '2%' }}>
             <CardContent>
               <Typography variant="body1">
-                Could not create the item: {error.message}
+                Could not create the item, dimensions and value should be
+                positive, name should be unique and quantity should be positive:{' '}
+                {error.message}
               </Typography>
             </CardContent>
           </Card>

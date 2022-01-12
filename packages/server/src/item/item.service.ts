@@ -1,11 +1,12 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
+import { LeanDocument, Model } from 'mongoose';
 import {
   Item,
   CreateItemInput,
   ItemDocument,
   UpdateItemInput,
+  FilterItemsInput,
 } from './item.schema';
 
 @Injectable()
@@ -23,6 +24,7 @@ export class ItemService {
 
   async create(item: CreateItemInput) {
     // Makes the name lowercase
+    // Makes it impossible for the user to mess up naming and dublicate items
     item.name = item.name.toLowerCase();
 
     // Calculates the volume on the fly using the length, the width and the height
@@ -60,6 +62,34 @@ export class ItemService {
 
   async delete(id: string) {
     return this.itemModel.findByIdAndRemove(id);
+  }
+
+  async filterItems(filters: FilterItemsInput) {
+    const {
+      maxValue,
+      minValue,
+      minQuantity,
+      maxQuantity,
+      minVolume,
+      maxVolume,
+    } = filters;
+
+    return this.itemModel
+      .find({
+        value: {
+          $gte: minValue || 0,
+          $lte: maxValue || Infinity,
+        },
+        quantity: {
+          $gte: minQuantity || 0,
+          $lte: maxQuantity || Infinity,
+        },
+        volume: {
+          $gte: minVolume || 0,
+          $lte: maxVolume || Infinity,
+        },
+      })
+      .lean();
   }
 
   calculateVolume(length: number, width: number, height: number): number {
