@@ -7,9 +7,9 @@ import { ListItemsQuery } from '../queries';
 function ListItemsCard() {
   const [firstLoad, setFirstLoad] = useState<boolean>(true);
 
-  const [maxValue, setMaxValue] = useState<number>(100);
-  const [maxQuantity, setMaxQuantity] = useState<number>(100);
-  const [maxVolume, setMaxVolume] = useState<number>(100);
+  const [maxValue, setMaxValue] = useState<number>(1);
+  const [maxQuantity, setMaxQuantity] = useState<number>(1);
+  const [maxVolume, setMaxVolume] = useState<number>(1);
 
   const [value, setValue] = useState<number[]>([0, maxValue]);
   const [quantity, setQuantity] = useState<number[]>([0, maxQuantity]);
@@ -27,6 +27,7 @@ function ListItemsCard() {
         maxVolume: !firstLoad ? volume[1] : null,
       },
     },
+    requestPolicy: 'network-only',
   });
 
   const { data, fetching, error } = result;
@@ -45,7 +46,6 @@ function ListItemsCard() {
 
   useEffect(() => {
     if (!error && !fetching && data?.filterItems?.length > 0 && firstLoad) {
-      setFirstLoad(false);
       const newMaxValue = Math.max.apply(
         Math,
         data.filterItems.map(function (item: Item) {
@@ -74,15 +74,19 @@ function ListItemsCard() {
       setValue([0, newMaxValue]);
       setQuantity([0, newMaxQuantity]);
       setVolume([0, newMaxVolume]);
+
+      setFirstLoad(false);
     }
-  }, [data, fetching, firstLoad]);
+  }, [data, error, fetching, firstLoad]);
 
   return (
     <Card variant="outlined">
       <CardContent>
         <Grid container spacing={2}>
           <Grid item xs={4}>
-            <Typography variant="h6">Filters</Typography>
+            <Typography variant="h6">
+              Filters {JSON.stringify(firstLoad)}
+            </Typography>
           </Grid>
         </Grid>
         <Card
