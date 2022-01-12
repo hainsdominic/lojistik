@@ -24,6 +24,7 @@ export class ItemResolver {
     return this.itemService.findById(_id);
   }
 
+  // Filter items list according to filters
   @Query(() => [Item])
   async filterItems(@Args('filter') filters: FilterItemsInput) {
     return this.itemService.filterItems(filters);
