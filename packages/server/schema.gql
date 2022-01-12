@@ -11,7 +11,7 @@ type Item {
   length: Float!
   weight: Float!
   volume: Float!
-  quantity: Float!
+  quantity: Int!
 }
 
 type Query {
@@ -23,8 +23,8 @@ type Query {
 input FilterItemsInput {
   maxValue: Float
   minValue: Float
-  minQuantity: Float
-  maxQuantity: Float
+  minQuantity: Int
+  maxQuantity: Int
   maxVolume: Float
   minVolume: Float
 }
@@ -42,7 +42,7 @@ input CreateItemInput {
   width: Float!
   length: Float!
   weight: Float!
-  quantity: Float!
+  quantity: Int!
 }
 
 input UpdateItemInput {
@@ -53,5 +53,5 @@ input UpdateItemInput {
   width: Float
   length: Float
   weight: Float
-  quantity: Float
+  quantity: Int
 }

@@ -48,7 +48,7 @@ export class Item {
 
   // Quantity of the item in the warehouse
   @Prop({ required: true })
-  @Field()
+  @Field(() => Int)
   quantity: number;
 }
 
@@ -79,9 +79,8 @@ export class CreateItemInput {
   @Field()
   weight: number;
 
-  @IsInt()
   @Min(0)
-  @Field()
+  @Field(() => Int)
   quantity: number;
 }
 
@@ -119,46 +118,39 @@ export class UpdateItemInput {
   @Field({ nullable: true })
   weight: number;
 
-  @IsInt()
   @Min(0)
   @IsOptional()
-  @Field({ nullable: true })
+  @Field(() => Int, { nullable: true })
   quantity: number;
 }
 
 @InputType()
 export class FilterItemsInput {
-  @IsNumber()
   @Min(0)
   @IsOptional()
   @Field({ nullable: true })
   maxValue: number;
 
-  @IsNumber()
   @Min(0)
   @IsOptional()
   @Field({ nullable: true })
   minValue: number;
 
-  @IsInt()
   @Min(0)
   @IsOptional()
-  @Field({ nullable: true })
+  @Field(() => Int, { nullable: true })
   minQuantity: number;
 
-  @IsInt()
   @Min(0)
   @IsOptional()
-  @Field({ nullable: true })
+  @Field(() => Int, { nullable: true })
   maxQuantity: number;
 
-  @IsNumber()
   @Min(0)
   @IsOptional()
   @Field({ nullable: true })
   maxVolume: number;
 
-  @IsNumber()
   @Min(0)
   @IsOptional()
   @Field({ nullable: true })
