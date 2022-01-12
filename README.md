@@ -1,5 +1,7 @@
 # Lojistik
 
+A full-stack web-application for managing warehouse inventory.
+
 ## Folder structure
 
 This application is in a Lerna monorepo and a yarn workspace.
