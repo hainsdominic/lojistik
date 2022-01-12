@@ -28,6 +28,8 @@ In order to facilitate demonstration I dockerized the whole application. You nee
 [Docker installation instructions](https://docs.docker.com/get-docker/)
 [docker-compose installation instructions](https://docs.docker.com/compose/install/)
 
+> Make sure you don't have a mongod process running already. To shut it down, if you are using systemctl, run ```sudo systemctl stop mongod```
+
 After installing the prerequisites, run this command in the folder root:
 
 ```docker-compose up```
