@@ -1,8 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { Card, CardContent, Grid, Slider, Typography } from '@mui/material';
-import { useQuery } from 'urql';
+import {
+  Button,
+  Card,
+  CardContent,
+  Grid,
+  Slider,
+  Typography,
+} from '@mui/material';
+import { useMutation, useQuery } from 'urql';
 import { Item } from '../types';
-import { ListItemsQuery } from '../queries';
+import { DeleteById, ListItemsQuery } from '../queries';
 
 function ListItemsCard() {
   const [firstLoad, setFirstLoad] = useState<boolean>(true);
@@ -14,6 +21,8 @@ function ListItemsCard() {
   const [value, setValue] = useState<number[]>([0, maxValue]);
   const [quantity, setQuantity] = useState<number[]>([0, maxQuantity]);
   const [volume, setVolume] = useState<number[]>([0, maxVolume]);
+
+  const [updateDeleteByIdResult, deleteById] = useMutation(DeleteById);
 
   const [result] = useQuery({
     query: ListItemsQuery,
@@ -156,6 +165,18 @@ function ListItemsCard() {
                 <Typography variant="body1">
                   Quantity: {item.quantity}
                 </Typography>
+                <Grid item>
+                  <Button
+                    variant="contained"
+                    color="error"
+                    onClick={() => {
+                      deleteById({ id: item._id });
+                    }}
+                    style={{ marginTop: '2%' }}
+                  >
+                    Delete
+                  </Button>
+                </Grid>
               </CardContent>
             </Card>
           ))}
